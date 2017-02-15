@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script> 
+        <link rel="stylesheet" type="text/css" href="css/main.css">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="tickets" id="app">
+    <div class="ticket" v-for="ticket in tickets" v-bind:class="{ paid: ticket.paid }">
+     <span class="number"> {{ ticket.number }} </span>
+      <span class="name"> {{ ticket.name }} </span>
+    </div>
+</div>
+</body>
+<script src="index.js"></script>
+</html>

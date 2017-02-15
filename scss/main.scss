@@ -1,0 +1,20 @@
+body{width: 100%; margin: 0;}
+.tickets{
+    display: flex;
+    flex-wrap: wrap;
+
+    .ticket{
+        border: black 1px solid;
+        min-height: 80px;
+        min-width: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background: #c0392b;
+        color: white;
+        &.paid{
+            background: #27ae60;
+        }
+    }
+}
