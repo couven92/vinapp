@@ -18,6 +18,11 @@ body {
     color: white; }
     .tickets .ticket.paid {
       background: #27ae60; }
+    .tickets .ticket.highlighted {
+      background: yellow;
+      color: black; }
+    .tickets .ticket.winner {
+      background: deeppink; }
 
 .lottery-button {
   font-size: 28px;

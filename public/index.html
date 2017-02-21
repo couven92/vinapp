@@ -10,9 +10,10 @@
 <body>
     <div id="app">
         <div class="tickets">
-            <div class="ticket" v-for="ticket in tickets" v-bind:class="{ paid: ticket.paid }">
+            <div class="ticket" v-for="ticket in tickets" v-bind:class="[ticket.paid ? 'paid' : '', ticket.color ]">
                 <span class="number"> {{ ticket.number }} </span>
                 <span class="name"> {{ ticket.name }} </span>
+                <span>{{ticket.paid}}</span>
             </div>
         </div>
         <button v-on:click="lottery" class="lottery-button">Trekk!</button>
