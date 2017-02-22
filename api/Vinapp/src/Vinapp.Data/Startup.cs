@@ -22,9 +22,9 @@ namespace Vinapp.Data
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(_config);
+            services.AddSingleton<IConfigurationRoot>(provider =>_config);
             services.AddDbContext<VinappContext>(ServiceLifetime.Scoped)
-              .AddIdentity<User, IdentityRole>();
+                .AddIdentity<User, IdentityRole>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

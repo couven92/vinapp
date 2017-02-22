@@ -8,9 +8,10 @@ using Vinapp.Data;
 namespace Vinapp.Data.Migrations
 {
     [DbContext(typeof(VinappContext))]
-    partial class VinappContextModelSnapshot : ModelSnapshot
+    [Migration("20170222194918_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.2")
