@@ -7,7 +7,7 @@ namespace Vinapp.Data
 {
     public class VinappContext : IdentityDbContext
     {
-        public VinappContext(DbContextOptions options, IConfiguration config) : base(options)
+        public VinappContext(DbContextOptions options, IConfigurationRoot config) : base(options)
         {
             _config = config;
         }
@@ -21,6 +21,17 @@ namespace Vinapp.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<User>()
+                .Property(p => p.UserId)
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<LotteryTicket>()
+                .HasKey(k => k.TicketId);
+
+            builder.Entity<LotteryTicket>()
+                .Property(p => p.TicketId)
+                .ValueGeneratedOnAdd();
 
             builder.Entity<LotteryTicket>()
                 .Property(p => p.Week);
