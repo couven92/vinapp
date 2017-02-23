@@ -22,10 +22,6 @@ namespace Vinapp.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<User>()
-                .Property(p => p.UserId)
-                .ValueGeneratedOnAdd();
-
             builder.Entity<LotteryTicket>()
                 .HasKey(k => k.TicketId);
 
