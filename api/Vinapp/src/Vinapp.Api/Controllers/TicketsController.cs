@@ -1,22 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Vinapp.Api.Dto;
+using Vinapp.Api.Services;
 
 namespace Vinapp.Api.Controllers
 {
+    [Route("api/[controller]")]
     public class TicketsController : Controller
     {
+        private readonly ILotteryTicketService _lotteryTicketService;
+
+        public TicketsController(ILotteryTicketService lotteryTicketService)
+        {
+            _lotteryTicketService = lotteryTicketService;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
             return Ok();
         }
 
-        [HttpPost]
-        public IActionResult Save()
+        [HttpPost("purchaseTicket")]
+        public async Task<IActionResult> PurchaseTicket([FromBody]LotteryTicketDto ticketDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Please make sure all fields are properly supplied");
+            }
+
+            await _lotteryTicketService.SaveTicket(ticketDto);
             return NoContent();
         }
 
