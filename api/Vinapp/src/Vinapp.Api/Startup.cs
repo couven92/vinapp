@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Vinapp.Api.Services;
+using Vinapp.Data;
+using Vinapp.Data.Dal;
+using Vinapp.Data.Models;
 
 namespace Vinapp.Api
 {
@@ -28,8 +30,13 @@ namespace Vinapp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(_config);
+            services.AddDbContext<VinappContext>(ServiceLifetime.Scoped).AddIdentity<User, IdentityRole>();
+
+
             // Add framework services.
             services.AddMvc();
+
+            services.AddTransient<ILotteryTicketRepository, LotteryTicketRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
