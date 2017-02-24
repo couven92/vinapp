@@ -36,6 +36,7 @@ namespace Vinapp.Api
             // Add framework services.
             services.AddMvc();
 
+            services.AddTransient<ILotteryTicketService, LotteryTicketService>();
             services.AddTransient<ILotteryTicketRepository, LotteryTicketRepository>();
         }
 
