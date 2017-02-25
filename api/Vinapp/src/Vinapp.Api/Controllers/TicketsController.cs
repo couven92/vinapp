@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Vinapp.Api.Dto;
 using Vinapp.Api.Services;
+#pragma warning disable 1591
 
 namespace Vinapp.Api.Controllers
 {
@@ -15,8 +17,17 @@ namespace Vinapp.Api.Controllers
             _lotteryTicketService = lotteryTicketService;
         }
 
+        /// <summary>
+        /// Provides all tickets for the provided {week}
+        /// </summary>
+        /// <param name="week"></param>
+        /// <returns>Collections of LotteryTicketDto</returns>
+        /// <response code="200">Collections of LotteryTicketDto</response>
+        /// <response code="400">If params {week} is null</response>
         [HttpGet("")]
-        public async Task<IActionResult> Get(int week)
+        [ProducesResponseType(typeof(IEnumerable<LotteryTicketDto>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<LotteryTicketDto>), 400)]
+        public async Task<IActionResult> Get([FromQuery]int week)
         {
             if (week < 1 || week > 53)
             {
@@ -27,6 +38,11 @@ namespace Vinapp.Api.Controllers
             return Ok(tickets);
         }
 
+        /// <summary>
+        /// Placing a ticket. TicketNumber and week are mandatory
+        /// </summary>
+        /// <param name="ticketDto"></param>
+        /// <returns></returns>
         [HttpPost("purchaseTicket")]
         public async Task<IActionResult> PurchaseTicket([FromBody]LotteryTicketDto ticketDto)
         {
@@ -39,7 +55,12 @@ namespace Vinapp.Api.Controllers
             return NoContent();
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Delete ticket by ticketnumber.
+        /// </summary>
+        /// <remarks>Not implemented yet!</remarks>
+        /// <returns></returns>
+        [HttpDelete]
         public IActionResult Delete()
         {
             return NoContent();
