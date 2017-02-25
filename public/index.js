@@ -10,8 +10,8 @@ var app = new Vue({
     methods: {
         lottery: function (event) {
             var arr = []
-            while (arr.length < 99) {
-                var randomnumber = Math.ceil(Math.random() * (99))
+            while (arr.length < 100) {
+                var randomnumber = Math.ceil(Math.random() * (100)-1)
                 if (arr.indexOf(randomnumber) > -1) continue;
                 arr[arr.length] = randomnumber;
             }
