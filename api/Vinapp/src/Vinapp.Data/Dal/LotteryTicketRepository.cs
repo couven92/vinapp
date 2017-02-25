@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Vinapp.Data.Models;
@@ -37,6 +38,11 @@ namespace Vinapp.Data.Dal
         {
             _vinappContext.Remove(ticket);
             await _vinappContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<LotteryTicket>> GetAllByWeek(int week)
+        {
+            return await _vinappContext.LotteryTickets.Where(x => x.Week == week).ToListAsync();
         }
     }
 }

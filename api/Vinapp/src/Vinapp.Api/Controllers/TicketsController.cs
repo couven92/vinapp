@@ -15,10 +15,16 @@ namespace Vinapp.Api.Controllers
             _lotteryTicketService = lotteryTicketService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("")]
+        public async Task<IActionResult> Get(int week)
         {
-            return Ok();
+            if (week < 1 || week > 53)
+            {
+                return BadRequest("Please provide a valid week number");
+            }
+
+            var tickets = await _lotteryTicketService.GetTicketsByWeek(week);
+            return Ok(tickets);
         }
 
         [HttpPost("purchaseTicket")]

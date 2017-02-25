@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Vinapp.Data.Models;
 
 namespace Vinapp.Data.Dal
@@ -12,5 +13,7 @@ namespace Vinapp.Data.Dal
         Task Update(LotteryTicket ticket);
 
         Task<LotteryTicket> Get(string ticketNumber, int week);
+
+        Task<IEnumerable<LotteryTicket>> GetAllByWeek(int week);
     }
 }

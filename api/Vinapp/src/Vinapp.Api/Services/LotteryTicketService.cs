@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Vinapp.Api.Dto;
 using Vinapp.Data.Dal;
@@ -41,6 +43,21 @@ namespace Vinapp.Api.Services
 
                 await _lotteryTicketRepository.Update(ticket);
             }
+        }
+
+        public async Task<IEnumerable<LotteryTicketDto>> GetTicketsByWeek(int week)
+        {
+            var tickets = await _lotteryTicketRepository.GetAllByWeek(week);
+            return tickets.Select(ToLotteryTicketsDto);
+        }
+
+        private static LotteryTicketDto ToLotteryTicketsDto(LotteryTicket ticket)
+        {
+            return new LotteryTicketDto
+            {
+                Week = ticket.Week,
+                TicketNumber = ticket.TicketNumber
+            };
         }
     }
 }
