@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "build-css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "build-css": "node-sass --include-path scss src/Vinapp.Api/Sass/main.scss   src/Vinapp.Api/wwwroot/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "author": "",
