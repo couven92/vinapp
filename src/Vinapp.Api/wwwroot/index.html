@@ -1,23 +1,29 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 </head>
 
 <body>
-    <div id="app">
-        <div class="tickets">
-            <div class="ticket" v-for="ticket in tickets" v-bind:class="[ticket.paid ? 'paid' : '', ticket.color ]">
-                <span class="number"> {{ ticket.number }} </span>
-                <span class="name"> {{ ticket.name }} </span>
-                <span>{{ticket.paid}}</span>
-            </div>
-        </div>
-        <button v-on:click="lottery" class="lottery-button">Trekk!</button>
+<div id="app">
+    <div class="header">
+        <img class="wine-emoji" src="images/Red_Wine_Emoji.png"/>
+        <h1 class="title">Bentes vinlotteri</h1>
+        <img class="wine-emoji" src="images/Red_Wine_Emoji.png" />
     </div>
+    <div class="tickets">
+        <div class="ticket" v-for="ticket in tickets" v-bind:class="[ticket.paid ? 'paid' : '', ticket.color ]">
+            <span class="number"> {{ ticket.number }} </span>
+            <span class="name" v-if="ticket.bought"> {{ ticket.name }} </span>
+            <button class="buy-button" v-else v-on:click="buy(ticket.number)">Kjøp</button>
+        </div>
+    </div>
+    <button v-on:click="lottery" class="lottery-button">Trekk!</button>
+</div>
 
 </body>
 <script src="index.js"></script>

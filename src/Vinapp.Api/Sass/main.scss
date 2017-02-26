@@ -1,9 +1,28 @@
-body{width: 100%; margin: 0; background-color: #2c3e50;}
-.tickets{
+body {
+    width: 100%;
+    margin: 0;
+    background-color: #2c3e50;
+    font-family: 'Josefin Slab', serif;
+}
+
+.header{
+    color: white;
+    text-align: center;
+    margin: 25px 0;
+    .title{
+        display: inline;
+    }
+    .wine-emoji{
+        height: 30px;
+    }
+}
+
+.tickets {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
-    .ticket{
+    .ticket {
         border: black 1px solid;
         min-height: 80px;
         min-width: 80px;
@@ -13,19 +32,30 @@ body{width: 100%; margin: 0; background-color: #2c3e50;}
         align-items: center;
         background: #c0392b;
         color: white;
-        &.paid{
+
+        &.paid {
             background: #27ae60;
         }
-        &.highlighted{
+
+        &.highlighted {
             background: yellow;
             color: black;
         }
-        &.winner{
+
+        &.winner {
             background: deeppink;
+        }
+
+        .buy-button {
+            background-color: #34495e;
+            color: white;
+            border: 0;
+            padding: 5px 15px;
         }
     }
 }
-.lottery-button{
+
+.lottery-button {
     font-size: 28px;
     line-height: 35px;
     padding: 15px;
