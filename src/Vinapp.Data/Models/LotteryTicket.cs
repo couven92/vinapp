@@ -19,5 +19,7 @@ namespace Vinapp.Data.Models
         public DateTime? RowUpdated { get; set; }
 
         public byte[] RowVersion { get; set; }
+
+        public User User { get; set; }
     }
 }
