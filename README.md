@@ -1,16 +1,17 @@
 Vinapp
 =========================
 
-## Dependencies
-* [npm](https://nodejs.org/en/)
-* npm install //installs all npm dependencies from package.json
-
-Watch sass: execute `npm run build-css`
+## Frontend dependencies
+* Download and install [npm](https://nodejs.org/en/)
+* Run in cmd/terminal from the root of the project: npm install //installs all npm dependencies from package.json
+* To watch changes in the sass file run: `npm run watch-css` (To only compile the sass once, run: `npm run build-css`)
 
 ## Asp.Net Core
 1. Load Vinapp.sln in Visual Studio. It is located in `/api/Vinapp/`
 2. Restore packages by running `dotnet restore` from pmc, and build the solution.
 3. Run the project with  `F5`
+4. The application can be found at localhost:9888/index.html
+5. The API can be found at localhost:9888/swagger/index.html
 
 
 ## Entity Framework
