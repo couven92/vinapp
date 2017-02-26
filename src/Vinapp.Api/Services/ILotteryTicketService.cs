@@ -6,7 +6,7 @@ namespace Vinapp.Api.Services
 {
     public interface ILotteryTicketService
     {
-        Task SaveTicket(LotteryTicketDto ticketDto);
+        Task SaveTicket(LotteryTicketDto ticketDto, string userName);
 
         Task<IEnumerable<LotteryTicketDto>> GetTicketsByWeek(int week);
     }

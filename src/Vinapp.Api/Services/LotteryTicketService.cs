@@ -2,46 +2,57 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Vinapp.Api.Controllers;
 using Vinapp.Api.Dto;
 using Vinapp.Data.Dal;
 using Vinapp.Data.Models;
+#pragma warning disable 1591
 
 namespace Vinapp.Api.Services
 {
     public class LotteryTicketService : ILotteryTicketService
     {
         private readonly ILotteryTicketRepository _lotteryTicketRepository;
+        private readonly UserManager<User> _userMngr;
 
-        public LotteryTicketService(ILotteryTicketRepository lotteryTicketRepository)
+
+        public LotteryTicketService(ILotteryTicketRepository lotteryTicketRepository, UserManager<User> userMngr)
         {
             _lotteryTicketRepository = lotteryTicketRepository;
+            _userMngr = userMngr;
         }
 
-        public async Task SaveTicket(LotteryTicketDto ticketDto)
+        public async Task SaveTicket(LotteryTicketDto ticketDto, string userName)
         {
-            var ticket = await _lotteryTicketRepository.Get(ticketDto.TicketNumber, ticketDto.Week);
+            var user = await _userMngr.FindByNameAsync(userName);
 
-            if (ticket == null)
+            if (user != null)
             {
-                var ticketModel = new LotteryTicket
+                var ticket = await _lotteryTicketRepository.Get(ticketDto.TicketNumber, ticketDto.Week);
+                if (ticket == null)
                 {
-                    IsPaid = false,
-                    IsWinnerTicket = false,
-                    Purchased = DateTime.UtcNow,
-                    Week = ticketDto.Week,
-                    TicketNumber = ticketDto.TicketNumber,
-                    RowUpdated = DateTime.UtcNow
-                };
+                    var ticketModel = new LotteryTicket
+                    {
+                        IsPaid = false,
+                        IsWinnerTicket = false,
+                        Purchased = DateTime.UtcNow,
+                        Week = ticketDto.Week,
+                        TicketNumber = ticketDto.TicketNumber,
+                        RowUpdated = DateTime.UtcNow,
+                        User = user
+                    };
 
-                await _lotteryTicketRepository.Insert(ticketModel);
-            }
-            else
-            {
-                ticket.IsPaid = ticket.IsPaid;
-                ticket.IsWinnerTicket = ticket.IsWinnerTicket;
-                ticket.RowUpdated = DateTime.UtcNow;
+                    await _lotteryTicketRepository.Insert(ticketModel);
+                }
+                else
+                {
+                    ticket.IsPaid = ticket.IsPaid;
+                    ticket.IsWinnerTicket = ticket.IsWinnerTicket;
+                    ticket.RowUpdated = DateTime.UtcNow;
 
-                await _lotteryTicketRepository.Update(ticket);
+                    await _lotteryTicketRepository.Update(ticket);
+                }
             }
         }
 
@@ -56,7 +67,8 @@ namespace Vinapp.Api.Services
             return new LotteryTicketDto
             {
                 Week = ticket.Week,
-                TicketNumber = ticket.TicketNumber
+                TicketNumber = ticket.TicketNumber,
+                Username = ticket.User?.UserName
             };
         }
     }
