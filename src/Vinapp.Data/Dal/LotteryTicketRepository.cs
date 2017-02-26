@@ -42,7 +42,7 @@ namespace Vinapp.Data.Dal
 
         public async Task<IEnumerable<LotteryTicket>> GetAllByWeek(int week)
         {
-            return await _vinappContext.LotteryTickets.Where(x => x.Week == week).ToListAsync();
+            return await _vinappContext.LotteryTickets.Include(x => x.User).Where(x => x.Week == week).ToListAsync();
         }
     }
 }
