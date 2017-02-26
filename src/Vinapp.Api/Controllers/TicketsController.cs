@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vinapp.Api.Dto;
 using Vinapp.Api.Services;
@@ -7,6 +10,7 @@ using Vinapp.Api.Services;
 
 namespace Vinapp.Api.Controllers
 {
+    [Authorize(Policy = "RegularUsers")]
     [Route("api/[controller]")]
     public class TicketsController : Controller
     {
@@ -51,8 +55,14 @@ namespace Vinapp.Api.Controllers
                 return BadRequest("Please make sure all fields are properly supplied");
             }
 
-            await _lotteryTicketService.SaveTicket(ticketDto);
-            return NoContent();
+            var userNameType = User.Claims.FirstOrDefault(x => x.Type == "Username");
+            if (userNameType != null)
+            {
+
+                await _lotteryTicketService.SaveTicket(ticketDto, userNameType.Value);
+                return NoContent();
+            }
+            return BadRequest("Username does not exist");
         }
 
         /// <summary>
