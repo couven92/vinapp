@@ -3,7 +3,7 @@ Vinapp
 
 ## Frontend dependencies
 * Download and install [npm](https://nodejs.org/en/)
-* Run in cmd/terminal from the root of the project: npm install //installs all npm dependencies from package.json
+* Run in cmd/terminal from the root of the project: `npm install` //installs all npm dependencies from package.json
 * To watch changes in the sass file run: `npm run watch-css` (To only compile the sass once, run: `npm run build-css`)
 
 ## Asp.Net Core
