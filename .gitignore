@@ -245,3 +245,4 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
+/api/Vinapp/Vinapp.Web/wwwroot/css

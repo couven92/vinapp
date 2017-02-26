@@ -10,7 +10,7 @@
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "build-css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "build-css": "node-sass --include-path scss api/Vinapp/Vinapp.Web/sass/main.scss   api/Vinapp/Vinapp.Web/wwwroot/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "author": "",
