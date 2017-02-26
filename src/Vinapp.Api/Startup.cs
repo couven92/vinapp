@@ -103,7 +103,7 @@ namespace Vinapp.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, VinappIdentityInitializer initializer)
         {
             loggerFactory.AddConsole(_config.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -133,6 +133,8 @@ namespace Vinapp.Api
             {
                 config.SwaggerEndpoint("/swagger/v1/swagger.json", "Vinapp API v1");
             });
+
+            initializer.Seed().Wait();
         }
     }
 }
