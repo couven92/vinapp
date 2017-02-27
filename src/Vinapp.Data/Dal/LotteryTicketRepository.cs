@@ -15,10 +15,11 @@ namespace Vinapp.Data.Dal
             _vinappContext = vinappContext;
         }
 
-        public async Task<LotteryTicket> Get(string ticketNumber, int week)
+        public async Task<LotteryTicket> Get(string ticketNumber, int week, string userId)
         {
             return
-                await _vinappContext.LotteryTickets.Where(x => x.Week == week && x.TicketNumber == ticketNumber)
+                await _vinappContext.LotteryTickets.Where(
+                        x => x.Week == week && x.TicketNumber == ticketNumber && x.User.Id == userId)
                     .FirstOrDefaultAsync();
         }
 

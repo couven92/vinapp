@@ -29,7 +29,7 @@ namespace Vinapp.Api.Services
 
             if (user != null)
             {
-                var ticket = await _lotteryTicketRepository.Get(ticketDto.TicketNumber, ticketDto.Week);
+                var ticket = await _lotteryTicketRepository.Get(ticketDto.TicketNumber, ticketDto.Week, user.Id);
                 if (ticket == null)
                 {
                     var ticketModel = new LotteryTicket

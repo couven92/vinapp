@@ -12,7 +12,7 @@ namespace Vinapp.Data.Dal
 
         Task Update(LotteryTicket ticket);
 
-        Task<LotteryTicket> Get(string ticketNumber, int week);
+        Task<LotteryTicket> Get(string ticketNumber, int week, string userId);
 
         Task<IEnumerable<LotteryTicket>> GetAllByWeek(int week);
     }
