@@ -30,6 +30,9 @@ namespace Vinapp.Data
                 .ValueGeneratedOnAdd();
 
             builder.Entity<LotteryTicket>()
+                .HasIndex(p => new {p.TicketNumber, p.Week}).IsUnique();
+
+            builder.Entity<LotteryTicket>()
                 .Property(p => p.Week);
 
             builder.Entity<LotteryTicket>()
