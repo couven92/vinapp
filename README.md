@@ -1,6 +1,16 @@
 Vinapp
 =========================
 
+## Installering av .net core + Visual studio
+Sjekk om du har DotNet installert, og evt hvilken versjon av CLI
+Run dotnet --version (displays Dot Net Core CLI version)
+Siste versjon av CLI er 1.0.0-preview2-1-003177
+DotNet Core 1.1 er siste versjon Dot Net runtime
+https://go.microsoft.com/fwlink/?LinkID=835014
+
+Installer siste versjon av DotNet Core SDK hvis du ikke har det.
+
+
 ## Frontend dependencies
 * Download and install [npm](https://nodejs.org/en/)
 * Run in cmd/terminal from the root of the project: `npm install` //installs all npm dependencies from package.json
