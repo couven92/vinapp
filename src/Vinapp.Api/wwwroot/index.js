@@ -1,14 +1,22 @@
 
 $.ajax({
     url: "/api/auth/token",
-    data: { username: "Njaal", password: "P@ssw0rd!" },
-    type: "GET",
+    data: JSON.stringify({ username: "Njaal", password: "P@ssw0rd!" }),
+    type: "POST",
+    header: {
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json'
+    },
+    contentType: "application/json",
+    error: function(data) {
+        console.log(data);
+    },
     success: function (data) {
         $.ajax({
             url: "/api/Settings/ticketsToUse",
             type: "GET",
             beforeSend: function (xhr) { xhr.setRequestHeader('authorization', 'bearer ' + data.token); },
-            success: function () {
+            success: function (data) {
                 var username = "user";
                 var tickets = [];
                 for (i = 0; i < data.amount; i++) {
