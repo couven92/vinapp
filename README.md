@@ -25,3 +25,16 @@ Vinapp
 ## Entity Framework
 * Start Powershell and run `dotnet ef database update`. (It want work from VS PMC). For more EF commands, see: [official page](https://github.com/aspnet/EntityFramework.Docs/blob/master/entity-framework/core/miscellaneous/cli/dotnet.md)
 * To verify the database was created, open `SQL Server Object Explorer` window in VS and expand `(localdb)\MSSQLLocalDB`. There should be a database `Vinapp.Context`
+
+##Vinapp idè og historie
+![alt tag](https://cloud.githubusercontent.com/assets/1454269/23453078/3813df0e-fe67-11e6-89ce-09fd380932a3.png)
+##Vinlotteriet i dag
+* Manuell registrering
+* Betaling basert på tillit
+* Krever oppmøte på kontoret eller PA
+* Feil i trekning
+* Tar seg dårlig ut i et konsulentselskap
+![alt tag](https://cloud.githubusercontent.com/assets/1454269/23453079/381673fe-fe67-11e6-930c-669c8c15aa17.jpg)
+
+##Arkitektur
+![alt tag](https://cloud.githubusercontent.com/assets/1454269/23453080/38168c54-fe67-11e6-948e-d44f123e3ada.png)
