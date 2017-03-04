@@ -24,7 +24,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative; }
+  position: relative;
+  margin: 50px; }
   .tickets .ticket {
     border: black 1px solid;
     min-height: 80px;
@@ -34,11 +35,13 @@ body {
     justify-content: space-around;
     align-items: center;
     background: #c0392b;
-    color: white; }
+    color: white;
+    font-size: 20px;
+    font-family: Arial}
     .tickets .ticket.paid {
       background: #27ae60; }
     .tickets .ticket.highlighted {
-      background: yellow;
+      background: purple;
       color: black; }
     .tickets .ticket.winner {
       background: green;
@@ -48,6 +51,8 @@ body {
       background: red; }
     .tickets .ticket.alreadywon {
       background: grey; }
+    .tickets .ticket .name-or-button {
+      min-height: 20px;}
     .tickets .ticket .buy-button {
       background-color: #34495e;
       color: white;

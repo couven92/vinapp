@@ -24,19 +24,24 @@ $.ajax({
 
                 var winners = [];
 
-                var username = "user";
+                var user = {
+                    name: "Bente",
+                    isBente: true
+                };
                 var tickets = [];
                 const names = ["Magnus", "Njaal"];
                 const boughtValues = [true, false, true];
                 for (i = 0; i < data.amount; i++) {
                     tickets[i] = { number: i + 1, name: names[i % 2], bought: boughtValues[i % 3], paid: false, color: "" };
                 }
+                const lotterymode = user.isBente;
 
                 var app = new Vue({
                     el: '#app',
                     data: {
                         tickets: tickets,
-                        winners: winners
+                        winners: winners,
+                        lotterymode: lotterymode
                     },
                     methods: {
                         lottery: function (event) {
@@ -95,7 +100,7 @@ $.ajax({
 
                         buy: function (ticketnumber) {
                             this.tickets[ticketnumber - 1].bought = true;
-                            this.tickets[ticketnumber - 1].name = username;
+                            this.tickets[ticketnumber - 1].name = user.name;
                         }
                     }
                 });
