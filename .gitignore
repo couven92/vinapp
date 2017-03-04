@@ -245,3 +245,6 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
+
+#Intellij/webstorm
+.idea/

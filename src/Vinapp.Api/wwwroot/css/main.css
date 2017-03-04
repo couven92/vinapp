@@ -13,6 +13,13 @@ body {
   .header .wine-emoji {
     height: 30px; }
 
+.winners-container {
+  color: white;
+  font-size: 28px;
+  margin: 25px; }
+.winners-container li {
+  display: inline; }
+
 .tickets {
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +40,11 @@ body {
       background: yellow;
       color: black; }
     .tickets .ticket.winner {
-      background: deeppink; }
+      background: green; }
+    .tickets .ticket.nowinner {
+      background: red; }
+    .tickets .ticket.alreadywon {
+      background: grey; }
     .tickets .ticket .buy-button {
       background-color: #34495e;
       color: white;

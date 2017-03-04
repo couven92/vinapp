@@ -134,7 +134,7 @@ namespace Vinapp.Api
                 config.SwaggerEndpoint("/swagger/v1/swagger.json", "Vinapp API v1");
             });
 
-            initializer.Seed().Wait();
+            //initializer.Seed().Wait();
         }
     }
 }
