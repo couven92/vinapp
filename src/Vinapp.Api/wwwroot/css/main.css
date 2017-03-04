@@ -23,7 +23,8 @@ body {
 .tickets {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
   .tickets .ticket {
     border: black 1px solid;
     min-height: 80px;
@@ -40,7 +41,9 @@ body {
       background: yellow;
       color: black; }
     .tickets .ticket.winner {
-      background: green; }
+      background: green;
+      transform: scale(2);
+      transition: all .5s; }
     .tickets .ticket.nowinner {
       background: red; }
     .tickets .ticket.alreadywon {
@@ -62,3 +65,15 @@ body {
   background-color: #e67e22;
   color: white;
   border: none; }
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
