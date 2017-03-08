@@ -1,4 +1,3 @@
-/*
 $.ajax({
     url: "/api/auth/token",
     data: JSON.stringify({ username: "Njaal", password: "P@ssw0rd!" }),
@@ -17,7 +16,6 @@ $.ajax({
             type: "GET",
             beforeSend: function (xhr) { xhr.setRequestHeader('authorization', 'bearer ' + data.token); },
             success: function (data) {
-*/
                 const data = {
                     amount: 100
                 };
@@ -104,10 +102,10 @@ $.ajax({
                         }
                     }
                 });
-/*            }
+            }
         });
     }
-});*/
+});
 
 
 
