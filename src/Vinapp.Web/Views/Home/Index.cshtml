@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="app">
+    <div class="header">
+        <img class="wine-emoji" src="~/images/Red_Wine_Emoji.png" />
+        <h1 class="title">Bentes vinlotteri</h1>
+        <img class="wine-emoji" src="~/images/Red_Wine_Emoji.png" />
+    </div>
+    <div class="tickets">
+        <div class="ticket" v-for="ticket in tickets" v-bind:class="[ticket.paid ? 'paid' : '', ticket.color ]">
+            <span class="number"> {{ ticket.number }} </span>
+            <span class="name" v-if="ticket.bought"> {{ ticket.name }} </span>
+            <button class="buy-button" v-else v-on:click="buy(ticket.number)">Kjøp</button>
+        </div>
+    </div>
+    <button v-on:click="lottery" class="lottery-button">Trekk!</button>
+</div>

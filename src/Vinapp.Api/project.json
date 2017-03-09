@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Vinapp.Data": "1.0.0-*",
     "Swashbuckle.AspNetCore": "1.0.0-rc1",
@@ -15,7 +15,8 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
     "Microsoft.AspNetCore.Identity": "1.1.0",
     "System.IdentityModel.Tokens.Jwt": "5.1.0",
-    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0"
+    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect": "1.0.0"
   },
 
   "tools": {

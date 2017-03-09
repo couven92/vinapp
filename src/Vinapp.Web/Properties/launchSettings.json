@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:9888",
+      "applicationUrl": "http://localhost:11776/",
       "sslPort": 0
     }
   },
@@ -11,14 +11,14 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Vinapp.Api": {
+    "Vinapp.Web": {
       "commandName": "Project",
-      "launchUrl": "http://localhost:5000/api/values",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

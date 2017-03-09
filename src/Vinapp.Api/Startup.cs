@@ -1,14 +1,18 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -27,6 +31,7 @@ namespace Vinapp.Api
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("config.json")
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
@@ -42,6 +47,9 @@ namespace Vinapp.Api
             services.AddDbContext<VinappContext>(ServiceLifetime.Scoped);
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<VinappContext>();
             services.AddTransient<VinappIdentityInitializer>();
+            // Add Authentication services.
+            services.AddAuthentication(sharedOptions => sharedOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+
 
             services.Configure<IdentityOptions>(cfg =>
             {
@@ -110,6 +118,21 @@ namespace Vinapp.Api
 
             app.UseStaticFiles();
 
+            // Configure the OWIN pipeline to use cookie auth.
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            // Configure the OWIN pipeline to use OpenID Connect auth.
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
+            {
+                ClientId = _config["AzureAD:ClientId"],
+                Authority = String.Format(_config["AzureAd:AadInstance"], _config["AzureAd:Tenant"]),
+                ResponseType = OpenIdConnectResponseType.IdToken,
+                PostLogoutRedirectUri = _config["AzureAd:PostLogoutRedirectUri"],
+                Events = new OpenIdConnectEvents
+                {
+                    OnRemoteFailure = OnAuthenticationFailed,
+                }
+            });
+
             app.UseIdentity();
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions()
@@ -135,6 +158,14 @@ namespace Vinapp.Api
             });
 
             initializer.Seed().Wait();
+        }
+
+        // Handle sign-in errors differently than generic errors.
+        private Task OnAuthenticationFailed(FailureContext context)
+        {
+            context.HandleResponse();
+            context.Response.Redirect("/Home/Error?message=" + context.Failure.Message);
+            return Task.FromResult(0);
         }
     }
 }
