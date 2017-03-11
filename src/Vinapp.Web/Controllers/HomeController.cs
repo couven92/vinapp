@@ -70,7 +70,9 @@ namespace Vinapp.Web.Controllers
             HttpResponseMessage response = await client.PostAsync(path, httpContent);
             if (response.IsSuccessStatusCode)
             {
-                return await response.Content.ReadAsAsync<Auth>().ConfigureAwait(false);
+                //return await response.Content.ReadAsAsync<Auth>().ConfigureAwait(false);
+                if (response.Content != null)
+                    return await JsonConvert.DeserializeObjectAsync<Auth>(await response.Content.ReadAsStringAsync());
             }
             return null;
         }
