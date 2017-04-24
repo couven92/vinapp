@@ -25,6 +25,9 @@ Vinapp
 4. The application can be found at localhost:9888/index.html
 5. The API can be found at localhost:9888/swagger/index.html
 
+## Known setup issues
+** The imported project "C:\Program Files(x86)\MSBuild\Microsoft\VisualStudio\v14.0\DotNet\Microsoft.DotNet.Props" was not found.Confirm that the path in the <Import> declaration is correct, and that the file exist on disk.
+* Verify that you have Visual Studio 2015 with update 2 (or VS 2017), if the issue still exists, try to go to control panel -> uninstall or change a program -> Select VS 2015 -> Change -> Repair
 
 
 
