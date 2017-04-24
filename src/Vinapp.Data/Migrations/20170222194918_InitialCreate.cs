@@ -45,8 +45,8 @@ namespace Vinapp.Data.Migrations
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     RowUpdated = table.Column<DateTime>(nullable: true),
                     RowVersion = table.Column<byte[]>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                    //UserId = table.Column<int>(nullable: true)
+                        //.Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {
@@ -72,7 +72,8 @@ namespace Vinapp.Data.Migrations
                 columns: table => new
                 {
                     TicketId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        //.Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        ,
                     IsPaid = table.Column<bool>(nullable: false),
                     IsWinnerTicket = table.Column<bool>(nullable: false),
                     Purchased = table.Column<DateTime>(nullable: true),
@@ -91,7 +92,8 @@ namespace Vinapp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        //.Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        ,
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: false)
@@ -112,7 +114,8 @@ namespace Vinapp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        //.Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        ,
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)

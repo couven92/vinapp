@@ -8,12 +8,12 @@ namespace Vinapp.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "TicketNumber",
-                table: "LotteryTickets",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldNullable: true);
+            //migrationBuilder.AlterColumn<string>(
+            //    name: "TicketNumber",
+            //    table: "LotteryTickets",
+            //    nullable: true,
+            //    oldClrType: typeof(string),
+            //    oldNullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_LotteryTickets_TicketNumber_Week",
@@ -28,12 +28,12 @@ namespace Vinapp.Data.Migrations
                 name: "IX_LotteryTickets_TicketNumber_Week",
                 table: "LotteryTickets");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "TicketNumber",
-                table: "LotteryTickets",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldNullable: true);
+            //migrationBuilder.AlterColumn<string>(
+            //    name: "TicketNumber",
+            //    table: "LotteryTickets",
+            //    nullable: true,
+            //    oldClrType: typeof(string),
+            //    oldNullable: true);
         }
     }
 }

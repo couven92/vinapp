@@ -32,13 +32,13 @@ namespace Vinapp.Data.Migrations
                 column: "NormalizedName",
                 unique: true);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_LotteryTickets_AspNetUsers_UserId",
-                table: "LotteryTickets",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            // migrationBuilder.AddForeignKey(
+            //     name: "FK_LotteryTickets_AspNetUsers_UserId",
+            //     table: "LotteryTickets",
+            //     column: "UserId",
+            //     principalTable: "AspNetUsers",
+            //     principalColumn: "Id",
+            //     onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

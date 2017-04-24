@@ -9,9 +9,9 @@ namespace Vinapp.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "AspNetUsers");
+            //migrationBuilder.DropColumn(
+            //    name: "UserId",
+            //    table: "AspNetUsers");
 
             migrationBuilder.AddColumn<string>(
                 name: "FirstName",
@@ -34,11 +34,12 @@ namespace Vinapp.Data.Migrations
                 name: "LastName",
                 table: "AspNetUsers");
 
-            migrationBuilder.AddColumn<int>(
-                name: "UserId",
-                table: "AspNetUsers",
-                nullable: true)
-                .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //migrationBuilder.AddColumn<int>(
+            //    name: "UserId",
+            //    table: "AspNetUsers",
+            //    nullable: true)
+            //    //.Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //    ;
         }
     }
 }

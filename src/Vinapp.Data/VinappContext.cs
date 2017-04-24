@@ -44,7 +44,8 @@ namespace Vinapp.Data
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer(_config["Data:ConnectionString"]);
+            //optionsBuilder.UseSqlServer(_config["Data:ConnectionString"]);
+            optionsBuilder.UseSqlite(_config["Data:ConnectionString"]);
         }
     }
 }
