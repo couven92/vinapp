@@ -16,10 +16,7 @@ $.ajax({
             type: "GET",
             beforeSend: function (xhr) { xhr.setRequestHeader('authorization', 'bearer ' + data.token); },
             success: function (data) {
-                const data = {
-                    amount: 100
-                };
-
+               
                 var winners = [];
 
                 var user = {
