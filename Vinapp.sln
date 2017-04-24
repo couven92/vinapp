@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C6B7B62-50F1-4EF0-B8DA-45DB9A969F94}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		package.json = package.json
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C27BF54E-D888-4961-8513-BA0CEBD0BB5D}"
 EndProject
